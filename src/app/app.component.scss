@@ -1,0 +1,406 @@
+$ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+$transition-slow: all 500ms ease-in-out 0s;
+$transition-normal: all 350ms $ease 0s;
+$box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 0 4px 8px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .175), 0 16px 32px rgba(0, 0, 0, .2);
+
+:host {
+  display: block;
+
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 430px);
+    min-height: 74px;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    min-width: 500px;
+    z-index: 1;
+    box-shadow: $box-shadow-strong;
+
+    button.generate {
+      font-family: 'Press Start 2P', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      font-size: 1.4rem;
+      border-radius: 6px;
+      color: white;
+      background: #5745e6;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+      text-shadow: 0 1px rgba(0, 0, 0, 0.14);
+      transition: $transition-normal;
+      letter-spacing: 1px;
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-right: 40px;
+
+      &:hover {
+        transition: $transition-normal;
+        background: lighten(#5745e6, 6%);
+      }
+
+      &:active {
+        background: lighten(#5745e6, 10%);
+      }
+    }
+
+    .download {
+      display: flex;
+      align-items: center;
+
+      .download-icon {
+        margin-right: 14px;
+
+        svg {
+          width: 18px;
+          height: 18px;
+          fill: #888888;
+        }
+      }
+
+      button.save {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+        background: #666666;
+        transition: $transition-normal;
+
+        + .save {
+          margin-left: 10px;
+        }
+
+        &:hover {
+          background: #777;
+          transition: $transition-normal;
+        }
+
+        svg {
+          fill: #FFFFFF;
+          width: 32px;
+        }
+      }
+    }
+  }
+
+  .art {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 360px);
+    height: 100vh;
+    overflow: hidden;
+    transition: opacity 500ms ease-in-out 0s;
+    opacity: 1;
+    position: relative;
+
+    .line {
+      transition: transform, order, border-radius 500ms ease-in-out 0s;
+    }
+
+    .empty {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-family: lato, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+
+      svg {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 14px;
+        fill: #FFFFFF;
+      }
+
+      .label {
+        font-size: 2.4rem;
+        color: #FFFFFF;
+        margin-bottom: 300px;
+      }
+    }
+  }
+
+  &.is-vertical {
+    .art {
+      flex-direction: row;
+    }
+  }
+
+  .panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 360px;
+    box-shadow: $box-shadow-strong;
+    color: #333333;
+    background: #F5F5F5;
+
+    .panel-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      min-height: 0;
+    }
+
+    .title {
+      font-size: 5.4rem;
+      line-height: 1.3;
+      color: #333333;
+      margin-bottom: 14px;
+      font-family: rucksack, sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .gradient-wrapper {
+      padding: 30px;
+      padding-bottom: 20px;
+
+      .colors {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 6px;
+        margin-left: -10px;
+
+        app-color-picker {
+          margin-top: 10px;
+          margin-left: 10px;
+        }
+
+        .new-color-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 46px;
+          height: 46px;
+          margin-top: 10px;
+          margin-left: 10px;
+
+          button.new-color {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: $transition-normal;
+            background: transparent;
+
+            &:hover {
+              transition: $transition-normal;
+              background: rgba(0, 0, 0, 0.1);
+            }
+
+            svg {
+              width: 18px;
+              height: 18px;
+              min-width: 18px;
+              fill: #666666;
+            }
+          }
+        }
+      }
+
+      .preview {
+        display: flex;
+        align-items: center;
+        height: 12px;
+        margin-top: 14px;
+        border-radius: 3px;
+      }
+    }
+
+    .controls {
+      flex-grow: 1;
+      overflow: auto;
+      min-height: 0;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-bottom: 30px;
+      padding-top: 10px;
+
+      .sample-gradients {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 6px;
+        margin-left: -10px;
+        margin-bottom: 20px;
+
+        .gradient {
+          display: flex;
+          width: 136px;
+          border-radius: 5px;
+          height: 36px;
+          margin-top: 10px;
+          margin-left: 10px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25);
+          transform: scale(1);
+          transition: $transition-normal;
+
+          &:hover {
+            transition: $transition-normal;
+            transform: scale(1.1);
+            cursor: pointer;
+            z-index: 1;
+          }
+        }
+      }
+
+      .input-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        + .input-wrapper {
+          margin-top: 14px;
+        }
+
+        .label {
+          font-family: lato, sans-serif;
+          font-weight: 400;
+          font-style: normal;
+          color: #666666;
+          font-size: 1.6rem;
+        }
+
+        mat-radio-group {
+          margin-top: 14px;
+          margin-bottom: 20px;
+
+          mat-radio-button {
+            ::ng-deep {
+              font-size: 1.6rem;
+              font-family: lato, sans-serif;
+              font-weight: 400;
+              font-style: normal;
+            }
+
+            + mat-radio-button {
+              margin-left: 20px;
+            }
+          }
+        }
+
+        mat-slider {
+          padding: 0;
+
+          ::ng-deep {
+            .mat-slider-wrapper {
+              left: 0;
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+
+    button.github {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background: transparent;
+
+      a {
+        width: 18px;
+        height: 18px;
+      }
+
+      svg {
+        transition: $transition-normal;
+        width: 18px;
+        height: 18px;
+        fill: #999999;
+      }
+
+      &:hover {
+        svg {
+          transition: $transition-normal;
+          fill: #541586;
+        }
+      }
+    }
+  }
+
+  &.is-generating {
+    .art {
+      opacity: 0.60;
+      transition: opacity 500ms ease-in-out 0s;;
+
+      .line {
+        transition: $transition-slow;
+      }
+    }
+  }
+
+  @media screen and (max-width: 920px) {
+    .art {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .panel {
+      position: relative;
+      width: 100%;
+    }
+
+    .options {
+      left: 20px;
+      right: 20px;
+      min-width: unset;
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+    .options {
+      .download {
+        button.save.tablet {
+          display: none;
+
+        }
+
+        button.save.desktop {
+          display: none;
+        }
+      }
+    }
+
+    .panel {
+      .gradient-wrapper {
+        padding: 20px;
+      }
+
+      .controls {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 50px;
+      }
+    }
+  }
+}
