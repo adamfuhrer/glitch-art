@@ -118,8 +118,9 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       align-items: center;
       justify-content: center;
       background: #333;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      text-align: center;
       font-family: lato, sans-serif;
       font-weight: 400;
       font-style: normal;
@@ -239,7 +240,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       padding-left: 30px;
       padding-right: 30px;
       padding-bottom: 30px;
-      padding-top: 10px;
+      padding-top: 16px;
 
       .sample-gradients {
         display: flex;
@@ -315,33 +316,29 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       }
     }
 
-    button.github {
+    button.info {
       position: absolute;
       top: 12px;
       right: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
       background: transparent;
-
-      a {
-        width: 18px;
-        height: 18px;
-      }
+      padding: 0;
 
       svg {
-        transition: $transition-normal;
         width: 18px;
         height: 18px;
-        fill: #999999;
+        transition: $transition-normal;
+        fill: #666666;
       }
 
       &:hover {
         svg {
           transition: $transition-normal;
-          fill: #541586;
+          fill: #5745e6;
         }
       }
     }
@@ -400,6 +397,14 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         padding-left: 20px;
         padding-right: 20px;
         padding-bottom: 50px;
+      }
+    }
+
+    .art {
+      .empty {
+        .label {
+          margin-bottom: 100px;
+        }
       }
     }
   }

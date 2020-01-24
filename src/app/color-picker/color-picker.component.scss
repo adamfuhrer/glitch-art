@@ -67,6 +67,7 @@ $transition-normal: all 350ms $ease 0s;
 
       svg {
         width: 10px;
+        min-width: 10px;
         height: 10px;
       }
     }

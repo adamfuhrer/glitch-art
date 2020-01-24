@@ -15,7 +15,7 @@ export interface GlitchLine {
 })
 export class AppComponent implements OnInit {
   amountOfLines = 40;
-  translateXAmount = 70;
+  translateAmount = 70;
   readonly panelWidth = 360;
 
   @HostBinding('class.is-vertical') isDirectionVertical = true;
@@ -39,9 +39,9 @@ export class AppComponent implements OnInit {
     ['#6a0e04', '#ff4c5e', '#ffd1be'],
     ['#73066f', '#ea21a1', '#ff7986', '#efe46c'],
     // ['#7d5dff', '#2bd9ff', '#41ff95'],
-    // ['#ffe850', '#ff7986', '#7917bd', '#44096c']
+    // ['#ffe850', '#ff7986', '#7917bd', '#44096c'],
     // ['#f432ab', '#541586', '#150533'],
-    // ['#56ff5c', '#fcff20', '#75dd86']
+    // ['#56ff5c', '#fcff20', '#75dd86'],
     // ['#7cd991', '#47af4a', '#1e834c', '#2c3b31', '#000000'],
   ];
 
@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
   }
 
   onTranslateXChange(amount: MatSliderChange) {
-    this.translateXAmount = amount.value;
+    this.translateAmount = amount.value;
 
     this.isGenerating = true;
     for (const line in this.lines) {
@@ -160,12 +160,12 @@ export class AppComponent implements OnInit {
   getRandomLineTransform() {
     if (this.isDirectionVertical) {
       return this.randomNumFromInterval(0, 1) === 1 ?
-        'translateY(' + this.randomNumFromInterval(0, this.translateXAmount) + 'vh)' :
-        'translateY(-' + this.randomNumFromInterval(0, this.translateXAmount) + 'vh)';
+        'translateY(' + this.randomNumFromInterval(0, this.translateAmount) + 'vh)' :
+        'translateY(-' + this.randomNumFromInterval(0, this.translateAmount) + 'vh)';
     } else {
       return this.randomNumFromInterval(0, 1) === 1 ?
-        'translateX(' + this.randomNumFromInterval(0, this.translateXAmount) + 'vw)' :
-        'translateX(-' + this.randomNumFromInterval(0, this.translateXAmount) + 'vw)';
+        'translateX(' + this.randomNumFromInterval(0, this.translateAmount) + 'vw)' :
+        'translateX(-' + this.randomNumFromInterval(0, this.translateAmount) + 'vw)';
     }
   }
 
