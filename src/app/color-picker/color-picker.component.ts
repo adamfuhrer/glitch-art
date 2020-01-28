@@ -1,4 +1,5 @@
 import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {BreakpointObserver} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-color-picker',
@@ -7,12 +8,21 @@ import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core
 })
 export class ColorPickerComponent {
   @Input() color = '#000000';
-  @Output() onColorChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() colorChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() removeClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @HostBinding('class.is-removing') isRemoving = false;
+  @HostBinding('class.is-mobile') isMobile: boolean;
+
+  constructor(breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe([
+      '(max-width: 560px)'
+    ]).subscribe(result => {
+        this.isMobile = result.matches;
+    });
+  }
 
   onChange(color: string) {
-    this.onColorChange.emit(color);
+    this.colorChange.emit(color);
   }
 
   onRemoveClick() {

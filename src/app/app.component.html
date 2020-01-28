@@ -48,7 +48,7 @@
       <div class="colors">
         <app-color-picker *ngFor="let color of gradient; let i = index; trackBy: trackColor"
                           [color]="color"
-                          (onColorChange)="onColorPickerChange($event, i)"
+                          (colorChange)="onColorPickerChange($event, i)"
                           (removeClicked)="onColorRemoveClick(i)">
         </app-color-picker>
         <div class="new-color-wrapper">
