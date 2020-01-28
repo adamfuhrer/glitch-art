@@ -13,6 +13,7 @@ a {
 
 button {
   border: none;
+  padding: 0;
 
   &:hover {
     cursor: pointer;
@@ -27,6 +28,3 @@ button {
     border: none;
   }
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

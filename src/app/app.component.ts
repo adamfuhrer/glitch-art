@@ -14,35 +14,30 @@ export interface GlitchLine {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  amountOfLines = 40;
-  translateAmount = 70;
+  amountOfLines = 60;
+  translateAmount = 50;
   readonly panelWidth = 360;
 
-  @HostBinding('class.is-vertical') isDirectionVertical = true;
-  @HostBinding('class.is-horizontal') isDirectionHorizontal = false;
+  @HostBinding('class.is-vertical') isDirectionVertical = false;
+  @HostBinding('class.is-horizontal') isDirectionHorizontal = true;
 
   directions = [
-    { name: 'Vertical', id: 'vertical'},
-    { name: 'Horizontal', id: 'horizontal'}
+    { name: 'Horizontal', id: 'horizontal'},
+    { name: 'Vertical', id: 'vertical'}
   ];
   corners = [
-    { name: 'Rounded', id: 'rounded'},
-    { name: 'Straight', id: 'straight'}
+    { name: 'Straight', id: 'straight'},
+    { name: 'Rounded', id: 'rounded'}
   ];
-  isRoundBorder = true;
+  isRoundBorder = false;
 
   lines: GlitchLine[] = [];
-  gradient = ['#ff5555', '#ffa655', '#ffec55', '#73ff55', '#55feff', '#55c4ff', '#c171ff', '#ff55fb'];
+  gradient = ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'];
   sampleGradients = [
-    ['#ff5555', '#ffa655', '#ffec55', '#73ff55', '#55feff', '#55c4ff', '#c171ff', '#ff55fb'],
-    ['#210d5f', '#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff', '#210d5f'],
-    ['#6a0e04', '#ff4c5e', '#ffd1be'],
+    ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'],
     ['#73066f', '#ea21a1', '#ff7986', '#efe46c'],
-    // ['#7d5dff', '#2bd9ff', '#41ff95'],
-    // ['#ffe850', '#ff7986', '#7917bd', '#44096c'],
-    // ['#f432ab', '#541586', '#150533'],
-    // ['#56ff5c', '#fcff20', '#75dd86'],
-    // ['#7cd991', '#47af4a', '#1e834c', '#2c3b31', '#000000'],
+    ['#6a0e04', '#ff4c5e', '#ffd1be'],
+    ['#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff']
   ];
 
   @HostBinding('class.is-generating') isGenerating = false;

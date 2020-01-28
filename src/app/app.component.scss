@@ -5,6 +5,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
 
 :host {
   display: block;
+  height: 100%;
 
   .options {
     display: flex;
@@ -39,7 +40,6 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       letter-spacing: 1px;
       padding-left: 30px;
       padding-right: 30px;
-      margin-right: 40px;
 
       &:hover {
         transition: $transition-normal;
@@ -69,6 +69,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -97,7 +98,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
     display: flex;
     flex-direction: column;
     width: calc(100vw - 360px);
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     transition: opacity 500ms ease-in-out 0s;
     opacity: 1;
@@ -379,7 +380,6 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       .download {
         button.save.tablet {
           display: none;
-
         }
 
         button.save.desktop {
