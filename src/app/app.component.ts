@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {MatSliderChange} from '@angular/material/slider';
-import html2canvas from 'html2canvas';
 import {MatRadioChange} from '@angular/material/radio';
+import html2canvas from 'html2canvas';
 
 export interface GlitchLine {
   transform: string;
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   gradient = ['#ff5555', '#ffa655', '#ffec55', '#73ff55', '#55feff', '#55c4ff', '#c171ff', '#ff55fb'];
   sampleGradients = [
     ['#ff5555', '#ffa655', '#ffec55', '#73ff55', '#55feff', '#55c4ff', '#c171ff', '#ff55fb'],
-    ['#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff'],
+    ['#210d5f', '#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff', '#210d5f'],
     ['#6a0e04', '#ff4c5e', '#ffd1be'],
     ['#73066f', '#ea21a1', '#ff7986', '#efe46c'],
     // ['#7d5dff', '#2bd9ff', '#41ff95'],

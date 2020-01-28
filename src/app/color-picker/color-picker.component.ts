@@ -42,7 +42,7 @@ export class ColorPickerComponent {
         }
       }
       luminosity = 0.2126 * responseColor[0] + 0.7152 * responseColor[1] + 0.0722 * responseColor[2];
-      return luminosity > 0.279 ? '#000000' : '#FFFFFF';
+      return luminosity > 0.279 ? '#222222' : '#FFFFFF';
     }
   }
 }
