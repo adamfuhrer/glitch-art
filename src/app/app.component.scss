@@ -1,11 +1,54 @@
 $ease: cubic-bezier(0.215, 0.61, 0.355, 1);
-$transition-slow: all 500ms ease-in-out 0s;
+$transition-slow: all 600ms ease-in-out 0s;
 $transition-normal: all 350ms $ease 0s;
 $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 0 4px 8px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .175), 0 16px 32px rgba(0, 0, 0, .2);
 
 :host {
   display: block;
   height: 100%;
+
+  .art {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 360px);
+    height: 100%;
+    overflow: hidden;
+    transition: opacity 500ms ease-in-out 0s;
+    opacity: 1;
+    position: relative;
+
+    .empty {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      padding-left: 40px;
+      padding-right: 40px;
+      text-align: center;
+      font-family: lato, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+
+      svg {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 14px;
+        fill: #FFFFFF;
+      }
+
+      .label {
+        font-size: 2.4rem;
+        color: #FFFFFF;
+        margin-bottom: 300px;
+      }
+    }
+  }
 
   .options {
     display: flex;
@@ -28,7 +71,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 48px;
+      height: 50px;
       font-size: 1.4rem;
       border-radius: 6px;
       color: white;
@@ -94,53 +137,6 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
     }
   }
 
-  .art {
-    display: flex;
-    flex-direction: column;
-    width: calc(100vw - 360px);
-    height: 100%;
-    overflow: hidden;
-    transition: opacity 500ms ease-in-out 0s;
-    opacity: 1;
-    position: relative;
-
-    .line {
-      transition: transform, order, border-radius 500ms ease-in-out 0s;
-    }
-
-    .empty {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      align-items: center;
-      justify-content: center;
-      background: #333;
-      padding-left: 40px;
-      padding-right: 40px;
-      text-align: center;
-      font-family: lato, sans-serif;
-      font-weight: 400;
-      font-style: normal;
-
-      svg {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 14px;
-        fill: #FFFFFF;
-      }
-
-      .label {
-        font-size: 2.4rem;
-        color: #FFFFFF;
-        margin-bottom: 300px;
-      }
-    }
-  }
-
   &.is-vertical {
     .art {
       flex-direction: row;
@@ -185,6 +181,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         flex-wrap: wrap;
         margin-top: 6px;
         margin-left: -10px;
+        position: relative;
 
         app-color-picker {
           margin-top: 10px;
@@ -212,14 +209,20 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
 
             &:hover {
               transition: $transition-normal;
-              background: rgba(0, 0, 0, 0.1);
+              background: rgba(0, 0, 0, 0.08);
+
+              svg {
+                transition: $transition-normal;
+                fill: #666666;
+              }
             }
 
             svg {
               width: 18px;
               height: 18px;
               min-width: 18px;
-              fill: #666666;
+              transition: $transition-normal;
+              fill: #999999;
             }
           }
         }
@@ -228,7 +231,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       .preview {
         display: flex;
         align-items: center;
-        height: 12px;
+        height: 10px;
         margin-top: 14px;
         border-radius: 3px;
       }
@@ -246,26 +249,40 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       .sample-gradients {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 6px;
-        margin-left: -10px;
+        margin-top: 10px;
+        margin-left: -4px;
         margin-bottom: 20px;
 
         .gradient {
           display: flex;
-          width: 136px;
-          border-radius: 5px;
-          height: 36px;
-          margin-top: 10px;
-          margin-left: 10px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25);
-          transform: scale(1);
+          flex: 1 1 140px;
+          height: 38px;
+          margin-top: 4px;
+          margin-left: 4px;
           transition: $transition-normal;
+          border-radius: 4px;
+          position: relative;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.16);
+            transition: $transition-normal;
+            z-index: 100;
+            width: 100%;
+            opacity: 0;
+          }
 
           &:hover {
             transition: $transition-normal;
-            transform: scale(1.1);
             cursor: pointer;
-            z-index: 1;
+
+            &:after {
+              opacity: 1;
+            }
           }
         }
       }
@@ -275,7 +292,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         flex-direction: column;
 
         + .input-wrapper {
-          margin-top: 14px;
+          margin-top: 10px;
         }
 
         .label {
@@ -287,7 +304,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         }
 
         mat-radio-group {
-          margin-top: 14px;
+          margin-top: 10px;
           margin-bottom: 20px;
 
           mat-radio-button {
@@ -333,7 +350,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         width: 18px;
         height: 18px;
         transition: $transition-normal;
-        fill: #666666;
+        fill: #999999;
       }
 
       &:hover {
@@ -348,7 +365,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
   &.is-generating {
     .art {
       opacity: 0.60;
-      transition: opacity 500ms ease-in-out 0s;;
+      transition: opacity 600ms ease-in-out 0s;
 
       .line {
         transition: $transition-slow;

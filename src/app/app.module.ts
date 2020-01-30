@@ -3,26 +3,27 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ColorPickerComponent } from './color-picker/color-picker.component';
-import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
+import { ColorChromeModule } from 'ngx-color/chrome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ColorPickerModule,
     MatSliderModule,
-    MatRadioModule
+    MatRadioModule,
+    ColorChromeModule
   ],
-  providers: [],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],

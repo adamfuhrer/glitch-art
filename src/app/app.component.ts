@@ -14,7 +14,7 @@ export interface GlitchLine {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  amountOfLines = 60;
+  amountOfLines = 50;
   translateAmount = 50;
   readonly panelWidth = 360;
 
