@@ -14,8 +14,8 @@ export interface GlitchLine {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  amountOfLines = 50;
-  translateAmount = 50;
+  amountOfLines = 70;
+  translateAmount = 40;
   readonly panelWidth = 360;
 
   @HostBinding('class.is-vertical') isDirectionVertical = false;
@@ -34,10 +34,11 @@ export class AppComponent implements OnInit {
   lines: GlitchLine[] = [];
   gradient = ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'];
   sampleGradients = [
-    ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'],
     ['#73066f', '#ea21a1', '#ff7986', '#efe46c'],
     ['#6a0e04', '#ff4c5e', '#ffd1be'],
-    ['#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff']
+    // ['#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff'],
+    ['#262637', '#FF268B', '#FF8448', '#F7E3B2', '#C59F56', '#2C40FF', '#262637'],
+    ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'],
   ];
 
   @HostBinding('class.is-generating') isGenerating = false;
@@ -80,7 +81,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onTranslateXChange(amount: MatSliderChange) {
+  onTranslateChange(amount: MatSliderChange) {
     this.translateAmount = amount.value;
 
     this.isGenerating = true;
@@ -169,22 +170,25 @@ export class AppComponent implements OnInit {
   }
 
   onPhoneClick() {
+    window.scrollTo(0, 0);
     html2canvas(document.querySelector('#art'),
-      {width: 1125, height: 2436, windowWidth: 1125 + this.panelWidth, windowHeight: 2436}).then(canvas => {
+      {scrollY: 0, scrollX: 0, width: 1125, height: 2436, windowWidth: 1125 + this.panelWidth, windowHeight: 2436}).then(canvas => {
       this.saveWallpaper(canvas, 'phone');
     });
   }
 
   onTabletClick() {
+    window.scrollTo(0, 0);
     html2canvas(document.querySelector('#art'),
-      {width: 1668, height: 2224, windowWidth: 1668 + this.panelWidth, windowHeight: 2224}).then(canvas => {
+      {scrollY: 0, scrollX: 0, width: 1668, height: 2224, windowWidth: 1668 + this.panelWidth, windowHeight: 2224}).then(canvas => {
       this.saveWallpaper(canvas, 'tablet');
     });
   }
 
   onDesktopClick() {
+    window.scrollTo(0, 0);
     html2canvas(document.querySelector('#art'),
-      {width: 2880, height: 1800, windowWidth: 2880 + this.panelWidth, windowHeight: 1800}).then(canvas => {
+      {scrollY: 0, scrollX: 0, width: 2880, height: 1800, windowWidth: 2880 + this.panelWidth, windowHeight: 1800}).then(canvas => {
       this.saveWallpaper(canvas, 'desktop');
     });
   }

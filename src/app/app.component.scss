@@ -48,6 +48,33 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         margin-bottom: 300px;
       }
     }
+
+    button.github {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      padding: 0;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        transition: $transition-normal;
+        fill: #FFFFFF;
+      }
+
+      &:hover {
+        svg {
+          transition: $transition-normal;
+          fill: #5745e6;
+        }
+      }
+    }
   }
 
   .options {
@@ -75,7 +102,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
       font-size: 1.4rem;
       border-radius: 6px;
       color: white;
-      background: #5745e6;
+      background: #555555;
       font-weight: 500;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
       text-shadow: 0 1px rgba(0, 0, 0, 0.14);
@@ -86,11 +113,11 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
 
       &:hover {
         transition: $transition-normal;
-        background: lighten(#5745e6, 6%);
+        background: lighten(#555555, 10%);
       }
 
       &:active {
-        background: lighten(#5745e6, 10%);
+        background: lighten(#555555, 10%);
       }
     }
 
@@ -117,7 +144,7 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         height: 50px;
         border-radius: 50%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
-        background: #666666;
+        background: #555555;
         transition: $transition-normal;
 
         + .save {
@@ -125,8 +152,12 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         }
 
         &:hover {
-          background: #777;
+          background: lighten(#555555, 10%);
           transition: $transition-normal;
+        }
+
+        &:active {
+          background: lighten(#555555, 10%);
         }
 
         svg {
@@ -255,13 +286,14 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
 
         .gradient {
           display: flex;
-          flex: 1 1 140px;
-          height: 38px;
+          height: 40px;
+          width: 100%;
+          max-width: 140px;
           margin-top: 4px;
           margin-left: 4px;
-          transition: $transition-normal;
           border-radius: 4px;
           position: relative;
+          transition: $transition-normal;
 
           &:after {
             content: '';
@@ -333,33 +365,6 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
         }
       }
     }
-
-    button.github {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      background: transparent;
-      padding: 0;
-
-      svg {
-        width: 18px;
-        height: 18px;
-        transition: $transition-normal;
-        fill: #999999;
-      }
-
-      &:hover {
-        svg {
-          transition: $transition-normal;
-          fill: #5745e6;
-        }
-      }
-    }
   }
 
   &.is-generating {
@@ -407,13 +412,13 @@ $box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 
 
     .panel {
       .gradient-wrapper {
-        padding: 20px;
+        padding: 24px;
       }
 
       .controls {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 50px;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 60px;
       }
     }
 
