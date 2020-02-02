@@ -14,7 +14,7 @@ export interface GlitchLine {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  amountOfLines = 70;
+  amountOfLines = 50;
   translateAmount = 40;
   readonly panelWidth = 360;
 
@@ -35,9 +35,9 @@ export class AppComponent implements OnInit {
   gradient = ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'];
   sampleGradients = [
     ['#73066f', '#ea21a1', '#ff7986', '#efe46c'],
-    ['#6a0e04', '#ff4c5e', '#ffd1be'],
+    ['#ffd1be', '#ff4c5e', '#6a0e04'],
     // ['#5b27ff', '#2bd9ff', '#c9f5ff', '#2bd9ff', '#5b27ff'],
-    ['#262637', '#FF268B', '#FF8448', '#F7E3B2', '#C59F56', '#2C40FF', '#262637'],
+    ['#FF268B', '#FF8448', '#F7E3B2', '#C59F56', '#2C40FF'],
     ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'],
   ];
 
@@ -54,8 +54,29 @@ export class AppComponent implements OnInit {
     this.addAmountOfLines(this.amountOfLines);
   }
 
+  generateLines() {
+    this.isGenerating = true;
+
+    for (const line in this.lines) {
+      this.lines[line].transform = this.getRandomLineTransform();
+      this.lines[line].order = this.getRandomLineOrder();
+    }
+
+    setTimeout(() => {
+      this.isGenerating = false;
+    }, 500);
+  }
+
   onColorPickerChange(color: string, index: number) {
     this.gradient[index] = color;
+  }
+
+  onColorRemoveClick(index: number) {
+    this.gradient.splice(index, 1);
+  }
+
+  onNewColorClick() {
+    this.gradient.push('#000000');
   }
 
   onDirectionChange(change: MatRadioChange) {
@@ -66,19 +87,6 @@ export class AppComponent implements OnInit {
 
   onCornerChange(change: MatRadioChange) {
     this.isRoundBorder = change.value === 'Rounded';
-  }
-
-  onAmountOfLinesChange(amount: MatSliderChange) {
-    if (amount.value !== this.amountOfLines) {
-      if (amount.value < this.amountOfLines) {
-        this.lines.splice(0, this.amountOfLines - amount.value);
-      } else {
-        this.addAmountOfLines(amount.value - this.amountOfLines);
-      }
-
-      this.amountOfLines = amount.value;
-      this.generateLines();
-    }
   }
 
   onTranslateChange(amount: MatSliderChange) {
@@ -93,25 +101,21 @@ export class AppComponent implements OnInit {
     }, 500);
   }
 
-  onColorRemoveClick(index: number) {
-    this.gradient.splice(index, 1);
-  }
-
   onSampleClick(sample: string[]) {
     this.gradient = [...sample];
   }
 
-  generateLines() {
-    this.isGenerating = true;
+  onAmountOfLinesChange(amount: MatSliderChange) {
+    if (amount.value !== this.amountOfLines) {
+      if (amount.value < this.amountOfLines) {
+        this.lines.splice(0, this.amountOfLines - amount.value);
+      } else {
+        this.addAmountOfLines(amount.value - this.amountOfLines);
+      }
 
-    for (const line in this.lines) {
-      this.lines[line].transform = this.getRandomLineTransform();
-      this.lines[line].order = this.getRandomLineOrder();
+      this.amountOfLines = amount.value;
+      this.generateLines();
     }
-
-    setTimeout(() => {
-      this.isGenerating = false;
-    }, 500);
   }
 
   addAmountOfLines(amount: number) {
@@ -134,7 +138,6 @@ export class AppComponent implements OnInit {
       return (0.06 / linesPerSection * 100).toString() + viewport;
     }
   }
-
 
   getBackgroundGradient(gradient: string[], direction: string = 'right') {
     if (gradient && gradient.length > 1) {
@@ -163,10 +166,6 @@ export class AppComponent implements OnInit {
         'translateX(' + this.randomNumFromInterval(0, this.translateAmount) + 'vw)' :
         'translateX(-' + this.randomNumFromInterval(0, this.translateAmount) + 'vw)';
     }
-  }
-
-  onNewColorClick() {
-    this.gradient.push('#000000');
   }
 
   onPhoneClick() {
