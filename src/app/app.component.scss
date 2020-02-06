@@ -1,7 +1,4 @@
-$ease: cubic-bezier(0.215, 0.61, 0.355, 1);
-$transition-slow: all 600ms ease-in-out 0s;
-$transition-normal: all 350ms $ease 0s;
-$box-shadow-strong: 0 1px 2px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .125), 0 4px 8px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .175), 0 16px 32px rgba(0, 0, 0, .2);
+@import '../styles/vars';
 $panel-width: 360px;
 
 :host {
@@ -88,7 +85,7 @@ $panel-width: 360px;
     position: absolute;
     bottom: 20px;
     left: calc(50% - 430px);
-    min-height: 74px;
+    height: 74px;
     padding: 14px 20px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(6px);
@@ -155,18 +152,15 @@ $panel-width: 360px;
           margin-left: 10px;
         }
 
-        &:hover {
+        &:hover, &:active {
           background: lighten(#555555, 10%);
           transition: $transition-normal;
-        }
-
-        &:active {
-          background: lighten(#555555, 10%);
         }
 
         svg {
           fill: #FFFFFF;
           width: 32px;
+          min-width: 32px;
         }
       }
     }
@@ -274,10 +268,10 @@ $panel-width: 360px;
       flex-grow: 1;
       overflow: auto;
       min-height: 0;
+      padding-top: 16px;
+      padding-bottom: 30px;
       padding-left: 30px;
       padding-right: 30px;
-      padding-bottom: 30px;
-      padding-top: 16px;
 
       .sample-gradients {
         display: flex;
@@ -380,7 +374,7 @@ $panel-width: 360px;
     }
   }
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: $breakpoint-tablet) {
     .art {
       display: flex;
       flex-direction: column;
@@ -403,14 +397,24 @@ $panel-width: 360px;
     }
   }
 
-  @media screen and (max-width: 560px) {
+  @media screen and (max-width: $breakpoint-mobile) {
     .options {
-      .download {
-        button.save.tablet {
-          display: none;
-        }
+      height: 50px;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      backdrop-filter: none;
 
-        button.save.desktop {
+      button.generate {
+        width: 100%;
+      }
+
+      .download-icon {
+        display: none;
+      }
+
+      .download {
+        button.save {
           display: none;
         }
       }
