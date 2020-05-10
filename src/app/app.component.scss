@@ -363,6 +363,34 @@ $panel-width: 360px;
     }
   }
 
+  .colors-lol {
+    border-top: 1px solid #DDDDDD;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    color: #ef4e7b;
+    font-family: lato, sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    text-decoration: none;
+    padding-top: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    transition: $transition-normal;
+
+    &:hover {
+      color: darken(#ef4e7b, 10%);
+    }
+
+    img {
+      width: 20px;
+      min-width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  }
+
   &.is-generating {
     .art {
       opacity: 0.60;
