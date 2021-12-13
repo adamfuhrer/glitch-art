@@ -15,7 +15,7 @@ export interface GlitchLine {
 })
 export class AppComponent implements OnInit {
   amountOfLines = 50;
-  translateAmount = 60;
+  translateAmount = 70;
   readonly panelWidth = 360;
 
   @HostBinding('class.is-vertical') isDirectionVertical = true;
@@ -26,20 +26,20 @@ export class AppComponent implements OnInit {
     { name: 'Horizontal', id: 'horizontal'}
   ];
   corners = [
-    { name: 'Rounded', id: 'rounded'},
+    { name: 'Round', id: 'rounded'},
     { name: 'Straight', id: 'straight'}
   ];
   isRoundBorder = true;
 
   lines: GlitchLine[] = [];
-  gradient = ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'];
+  gradient = ['#73066f', '#ea21a1', '#ff7986', '#efe46c'];
   sampleGradients = [
     ['#73066f', '#ea21a1', '#ff7986', '#efe46c'],
     ['#ffd1be', '#ff4c5e', '#6a0e04'],
-    ['#FF268B', '#FF8448', '#F7E3B2', '#C59F56', '#2C40FF'],
+    ['#FFB794', '#2D41FE', '#111111'],
     ['#ff4444', '#ff983c', '#ffe938', '#5dff3a', '#3bfeff', '#3abbff', '#a837ff', '#ff3efa'],
   ];
-
+  
   @HostBinding('class.is-generating') isGenerating = false;
 
   @HostListener('window:resize') onResize() {

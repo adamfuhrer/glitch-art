@@ -52,20 +52,20 @@ $panel-width: 360px;
 
   button.github {
     position: absolute;
-    top: 14px;
-    right: 14px + $panel-width;
+    top: 10px;
+    right: 10px + $panel-width;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     background: transparent;
     padding: 0;
     z-index: 1000;
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       transition: $transition-normal;
       fill: #FFFFFF;
     }
