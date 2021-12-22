@@ -67,13 +67,13 @@ $panel-width: 360px;
       width: 20px;
       height: 20px;
       transition: $transition-normal;
-      fill: #FFFFFF;
+      fill: rgba(255, 255, 255, 0.8);
     }
 
     &:hover {
       svg {
         transition: $transition-normal;
-        fill: #5745E6;
+        fill: white;
       }
     }
   }
@@ -384,11 +384,16 @@ $panel-width: 360px;
     }
 
     img {
-      width: 20px;
-      min-width: 20px;
-      height: 20px;
+      width: 18px;
+      min-width: 18px;
+      height: 18px;
       margin-right: 8px;
     }
+  }
+
+  .colors-lol + .colors-lol {
+    margin-top: 0;
+    border-top: 0;
   }
 
   &.is-generating {
