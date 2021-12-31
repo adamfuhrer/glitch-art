@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
   ];
   
   @HostBinding('class.is-generating') isGenerating = false;
+  @HostBinding('class.is-about-visible') isAboutVisible = false;
 
   @HostListener('window:resize') onResize() {
     this.cdr.detectChanges();
@@ -66,6 +67,12 @@ export class AppComponent implements OnInit {
     }, 500);
   }
 
+  setIsAboutVisible(visible) {
+    setTimeout(() => {
+      this.isAboutVisible = visible;
+    }, 0);
+  }
+
   onColorPickerChange(color: string, index: number) {
     this.gradient[index] = color;
   }
@@ -85,7 +92,7 @@ export class AppComponent implements OnInit {
   }
 
   onCornerChange(change: MatRadioChange) {
-    this.isRoundBorder = change.value === 'Rounded';
+    this.isRoundBorder = change.value === 'Round';
   }
 
   onTranslateChange(amount: MatSliderChange) {

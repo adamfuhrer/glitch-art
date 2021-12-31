@@ -50,34 +50,6 @@ $panel-width: 360px;
     }
   }
 
-  button.github {
-    position: absolute;
-    top: 10px;
-    right: 10px + $panel-width;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    padding: 0;
-    z-index: 1000;
-
-    svg {
-      width: 20px;
-      height: 20px;
-      transition: $transition-normal;
-      fill: rgba(255, 255, 255, 0.8);
-    }
-
-    &:hover {
-      svg {
-        transition: $transition-normal;
-        fill: white;
-      }
-    }
-  }
-
   .options {
     display: flex;
     align-items: center;
@@ -202,8 +174,11 @@ $panel-width: 360px;
     }
 
     .gradient-wrapper {
-      padding: 30px;
-      padding-bottom: 20px;
+      margin: 30px 20px 0px 19px;
+      padding-bottom: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-bottom: 1px solid #ddd;
 
       .colors {
         display: flex;
@@ -261,6 +236,20 @@ $panel-width: 360px;
         height: 10px;
         margin-top: 14px;
         border-radius: 3px;
+      }
+
+      .about-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #999999;
+        transition: $transition-normal;
+        background: transparent;
+
+        &:hover {
+          transition: $transition-normal;
+          color: #ff4081;
+        }
       }
     }
 
@@ -363,9 +352,8 @@ $panel-width: 360px;
     }
   }
 
-  .colors-lol {
-    border-top: 1px solid #DDDDDD;
-    height: 40px;
+  .project-link {
+    height: 30px;
     display: flex;
     align-items: center;
     color: #ef4e7b;
@@ -373,10 +361,7 @@ $panel-width: 360px;
     font-weight: 400;
     font-size: 1.6rem;
     text-decoration: none;
-    padding-top: 14px;
-    padding-left: 10px;
     padding-right: 10px;
-    margin-top: 20px;
     transition: $transition-normal;
 
     &:hover {
@@ -389,11 +374,6 @@ $panel-width: 360px;
       height: 18px;
       margin-right: 8px;
     }
-  }
-
-  .colors-lol + .colors-lol {
-    margin-top: 0;
-    border-top: 0;
   }
 
   &.is-generating {
@@ -412,10 +392,6 @@ $panel-width: 360px;
       display: flex;
       flex-direction: column;
       width: 100%;
-    }
-
-    button.github {
-      right: 14px;
     }
 
     .panel {
@@ -469,6 +445,70 @@ $panel-width: 360px;
       .empty {
         .label {
           margin-bottom: 100px;
+        }
+      }
+    }
+  }
+
+  &.is-about-visible {
+    .panel {
+      .gradient-wrapper {
+        .about-section {
+          position: absolute;
+          top: 40px;
+          right: 14px;
+          padding: 20px;
+          box-shadow: $box-shadow-strong;
+          border-radius: 8px;
+          background: white;
+          width: 280px;
+          display: flex;
+          flex-direction: column;
+          z-index: 100;
+          font-family: lato, sans-serif;
+          font-weight: 400;
+          font-style: normal;
+          color: #333333;
+          font-size: 1.6rem;
+
+          div + div {
+            margin-top: 20px;
+          }
+
+          a {
+            text-decoration: none;
+            color: #ef4e7b;
+            transition: $transition-normal;
+        
+            &:hover {
+              color: darken(#ef4e7b, 10%);
+            }
+          }
+
+          .github {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            padding: 0;
+            z-index: 1000;
+  
+            svg {
+              width: 18px;
+              height: 18px;
+              transition: $transition-normal;
+              fill: #333333;
+            }
+  
+            &:hover {
+              svg {
+                fill: #ef4e7b;
+                transition: $transition-normal;
+              }
+            }
+          }
         }
       }
     }
